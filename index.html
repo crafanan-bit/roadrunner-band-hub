@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRMS Band - Road Runner Band Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Vintage Gold & Charcoal -->
+    <!-- Application Structure Plan: A tab-based single-page application (SPA) is used to organize information into logical sections (Home, Calendar, Policies, Resources, Fundraising). This structure is intuitive for parents, allowing them to quickly find specific information like performance dates or uniform requirements without scrolling through a long document. The core interaction is tab navigation to switch content views. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Grading Categories. Goal: Compare/Inform. Viz/Method: Chart.js Donut Chart. Interaction: Hover tooltips. Justification: A donut chart provides a much faster and more intuitive understanding of grade composition than a text list, which is ideal for busy parents. Library: Chart.js/Canvas.
+        - Report Info: Performance & Rehearsal Dates. Goal: Organize/Inform. Viz/Method: Column-based layout for each band. Interaction: None needed. Justification: Separating events into dedicated columns for each band offers maximum clarity and removes the need for user filtering, making the schedule instantly readable. Method: Vanilla JS DOM manipulation.
+        - Report Info: Uniforms and Materials. Goal: Inform. Viz/Method: Styled cards with columns. Interaction: None. Justification: Separating these key logistical items into visually distinct cards with clear headings makes them easy to find and reference. Method: HTML/Tailwind.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #FDFDFB; color: #333333; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .tab { cursor: pointer; padding: 1rem 1.5rem; border-bottom: 4px solid transparent; transition: all 0.3s ease; color: #5a5a5a; font-weight: 500; }
+        .tab-active { color: #1a1a1a; border-bottom-color: #D4AF37; font-weight: 700; }
+        .content-section { display: none; }
+        .content-section.active { display: block; animation: fadeIn 0.7s; }
+        .chart-container { position: relative; width: 100%; max-width: 320px; margin: 1rem auto; height: 320px; }
+        .divider {
+            width: 100px;
+            height: 2px;
+            background-color: #D4AF37;
+            margin: 1.5rem auto;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #eeeeee;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .google-calendar-embed {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .google-calendar-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        
+        <header class="text-center mb-12">
+            <h1 class="font-serif text-5xl md:text-6xl font-bold text-gray-800">Tomas Rivera Middle School Band</h1>
+            <p class="text-xl text-gray-500 mt-3">Road Runner Band Hub 2025-2026</p>
+        </header>
+
+        <nav class="flex flex-wrap justify-center border-b border-gray-200 mb-12">
+            <div data-tab="home" class="tab">Home</div>
+            <div data-tab="calendar" class="tab tab-active">Calendar</div>
+            <div data-tab="policies" class="tab">Policies & Uniforms</div>
+            <div data-tab="resources" class="tab">Resources</div>
+            <div data-tab="fundraising" class="tab">Fundraising</div>
+        </nav>
+
+        <main id="content-container">
+            
+            <section id="home" class="content-section">
+                <div class="card p-8 md:p-12 max-w-5xl mx-auto">
+                    <h2 class="font-serif text-4xl font-bold text-gray-800 mb-6 text-center">A Welcome from Mr. Rafanan</h2>
+                    <div class="divider"></div>
+                    <div class="prose max-w-none text-gray-600 leading-relaxed text-left">
+                        <p>I would like to welcome you to the Tomas Rivera Middle School Music Program for the 2025-2026 school year. My name is Colton Rafanan and I'm proud to serve as the Band Director of this program.</p>
+                        <p>Music is an important component to a student's educational experience. In this program, students can build self-esteem, social skills, and creativity in a safe learning environment. Students from this program, equipped with musical training, learn skills such as working effectively in a group setting, utilizing strong communication skills, and using problem-solving techniques to overcome new concepts.</p>
+                        <p>My goal as a teacher is to guide my students to success through musicianship. This program is built to allow students to take pride in their performances and their musical work. I look forward to working with students and anticipate a year of hard-work, learning, and fun. I encourage parents and guardians to participate in the band volunteer program and watch our future concerts and performances.</p>
+                        <p>If you have any questions, feel free to contact me. Thank you for your support!</p>
+                        <div class="mt-8 bg-amber-50 border-l-4 border-amber-400 p-5 rounded-r-lg">
+                            <p class="font-semibold text-gray-800">Colton Rafanan, Band Director</p>
+                            <p><strong>Email:</strong> crafanan@valverde.edu</p>
+                            <p><strong>Phone:</strong> (951) 940-8570 ext. 26811</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="calendar" class="content-section active">
+                <div class="card p-8 md:p-10">
+                    <h2 class="font-serif text-4xl font-bold text-gray-800 mb-4 text-center">Event Calendar</h2>
+                    <p class="text-center text-gray-500 mb-2">The most up-to-date information can be found on our live Google Calendar.</p>
+                    <div class="divider"></div>
+
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-12">
+                         <h3 class="font-serif text-3xl font-bold mb-4 text-gray-800 text-center">Live Band Calendar</h3>
+                         <div class="google-calendar-embed">
+                             <iframe src="https://calendar.google.com/calendar/embed?src=c_a7badca8a482e6089ecf028ba80183cee797ca9e538e03be6c028d9ce2f96fe2%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                         </div>
+                         <a href="https://calendar.google.com/calendar/u/0?cid=Y19hN2JhZGNhOGE0ODJlNjA4OWVjZjAyOGJhODAxODNjZWU3OTdjYTllNTM4ZTAzYmU2YzAyOGQ5Y2UyZjk2ZmUyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm w-full block mt-6">View Full Calendar in New Tab</a>
+                    </div>
+                    
+                    <h3 class="font-serif text-3xl font-bold text-gray-800 mb-6 text-center">Key Performances</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                        <div>
+                            <h4 class="font-serif text-2xl font-bold mb-6 text-center text-gray-800">Beginning Band</h4>
+                            <div id="beginning-band-performances" class="space-y-4"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-2xl font-bold mb-6 text-center text-gray-800">Intermediate Band</h4>
+                            <div id="intermediate-band-performances" class="space-y-4"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-2xl font-bold mb-6 text-center text-gray-800">Advanced Band</h4>
+                            <div id="advanced-band-performances" class="space-y-4"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-2xl font-bold mb-6 text-center text-gray-800">Marching Band</h4>
+                            <div id="marching-band-performances" class="space-y-4"></div>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-10 border-gray-200">
+
+                    <h3 class="font-serif text-3xl font-bold text-gray-800 mb-6 text-center">Weekly Rehearsals</h3>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div>
+                            <h4 class="font-serif text-2xl font-bold mb-6 text-center text-gray-800">Intermediate & Advanced</h4>
+                            <div id="int-adv-rehearsals" class="space-y-4"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-2xl font-bold mb-6 text-center text-gray-800">Marching Band</h4>
+                            <div id="marching-rehearsals" class="space-y-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="policies" class="content-section">
+                <div class="space-y-10 max-w-7xl mx-auto">
+                    <div class="card p-8 md:p-10">
+                        <h2 class="font-serif text-4xl font-bold text-gray-800 mb-6 text-center">Grading Policy</h2>
+                        <div class="divider"></div>
+                        <div class="grid md:grid-cols-2 gap-10 items-center mb-10">
+                            <div class="text-center md:text-left">
+                                <h3 class="font-serif text-3xl font-bold mb-4 text-gray-800">Grading Categories</h3>
+                                <p class="text-gray-600 mb-6 leading-relaxed">A student's grade is determined by their performance in concerts, assignments, and class participation. Concerts are the primary final assessment.</p>
+                                <div class="chart-container">
+                                    <canvas id="gradingChart"></canvas>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-3xl font-bold mb-4 text-gray-800">Grading Scale</h3>
+                                <ul class="space-y-3 bg-gray-50 p-5 rounded-lg border border-gray-200">
+                                    <li><span class="font-bold text-green-700">A (85-100%):</span> Exceeds Proficiency</li>
+                                    <li><span class="font-bold text-blue-700">B (70-84%):</span> Meets Proficiency</li>
+                                    <li><span class="font-bold text-yellow-600">C (55-69%):</span> Approaching Proficiency</li>
+                                    <li><span class="font-bold text-orange-600">D (40-54%):</span> Partially Proficient</li>
+                                    <li><span class="font-bold text-red-700">F (0-39%):</span> Below Proficiency</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr class="my-10 border-gray-200">
+                        <h3 class="font-serif text-3xl font-bold text-gray-800 mb-6 text-center">Category Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h4 class="font-serif font-bold text-xl" style="color: #4A5568;">Concert Performances (40%)</h4>
+                                <p class="text-sm text-gray-600 mt-2 leading-relaxed">Graded on in-person group performance. This is the primary final assessment. Points can be lost for tardiness, unexcused absences, forgotten equipment, or disruptiveness. Students are responsible for arranging make-up work.</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                 <h4 class="font-serif font-bold text-xl" style="color: #4A5568;">Assignments (20%)</h4>
+                                 <p class="text-sm text-gray-600 mt-2 leading-relaxed">Submitted on Google Classroom or Make Music. These vary from music history to playing assignments and are completed on the student’s own time. Details will be posted in Google Classroom.</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                 <h4 class="font-serif font-bold text-xl" style="color: #4A5568;">Journal (10%)</h4>
+                                 <p class="text-sm text-gray-600 mt-2 leading-relaxed">Short daily or weekly assignments to review material, pre-teach concepts, analyze music, and for self-reflection. Journals are checked two weeks before the end of each quarter.</p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                 <h4 class="font-serif font-bold text-xl" style="color: #4A5568;">Playing/Vocab Tests (30%)</h4>
+                                 <p class="text-sm text-gray-600 mt-2 leading-relaxed">Periodic playing tests to check for understanding, graded on accuracy, technique, and musicality. Vocabulary tests will also be given. Make-ups are by appointment only.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card p-8 md:p-10">
+                        <h2 class="font-serif text-4xl font-bold text-gray-800 mb-6 text-center">Uniform Requirements</h2>
+                        <div class="divider"></div>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h3 class="font-serif text-xl font-bold mb-3 text-gray-800">Beginning Band</h3>
+                                <p class="text-sm text-gray-500 mb-4">Concert Season Uniform</p>
+                                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                    <li><strong>Shirt:</strong> Any White Shirt/Blouse.</li>
+                                    <li><strong>Pants:</strong> Black jeans or slacks.</li>
+                                    <li><strong>Shoes:</strong> Black dress shoes or solid black sneakers.</li>
+                                    <li><strong>Socks:</strong> Solid black, no designs.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h3 class="font-serif text-xl font-bold mb-3 text-gray-800">Intermediate & Adv.</h3>
+                                <p class="text-sm text-gray-500 mb-4">Concert Season Uniform</p>
+                                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                    <li><strong>Shirt:</strong> Black Band Polo.</li>
+                                    <li><strong>Pants:</strong> Black jeans or slacks.</li>
+                                    <li><strong>Shoes:</strong> Black dress shoes or solid black sneakers.</li>
+                                    <li><strong>Socks:</strong> Solid black, no designs.</li>
+                                </ul>
+                            </div>
+                             <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                                <h3 class="font-serif text-xl font-bold mb-3 text-gray-800">Marching Band</h3>
+                                <p class="text-sm text-gray-500 mb-4">For rehearsals & performances</p>
+                                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                    <li><strong>Shirt:</strong> Plain Black Shirt or PE Shirt.</li>
+                                    <li><strong>Shorts:</strong> Athletic shorts.</li>
+                                    <li><strong>Socks:</strong> Long, solid black socks.</li>
+                                    <li>
+                                        <strong>Shoes:</strong> Students will be required to purchase black marching shoes.
+                                        <a href="https://www.bandshoppe.com/product/speedsters-marching-band-shoe/" target="_blank" class="text-blue-600 hover:underline block mt-2">Link to purchase Speedster Shoes</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                         <p class="text-center text-sm text-gray-500 mt-8">Please contact Mr. Rafanan if you have any questions or concerns about acquiring uniforms.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="resources" class="content-section">
+                <div class="space-y-8 max-w-6xl mx-auto">
+                    <div class="card p-8">
+                        <h2 class="font-serif text-3xl font-bold text-gray-800 mb-4 text-center">Stay Connected</h2>
+                        <p class="mb-6 text-gray-600 text-center">The Remind app is the primary tool for all band announcements and reminders. Please join to stay up-to-date.</p>
+                        <div class="bg-gray-100 p-6 rounded-lg text-center max-w-md mx-auto">
+                            <h3 class="font-bold text-lg text-gray-800">Join our Remind Class</h3>
+                            <p class="text-sm text-gray-500 mt-1 mb-3">For Intermediate/Advanced Band</p>
+                            <p class="font-semibold text-gray-800 text-lg">Text <code class="bg-gray-200 text-gray-800 font-bold px-3 py-1 rounded-md">@trmsbd</code> to <code class="bg-gray-200 text-gray-800 font-bold px-3 py-1 rounded-md">81010</code></p>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                         <div class="card p-8">
+                            <h2 class="font-serif text-3xl font-bold text-gray-800 mb-4">Online Platforms</h2>
+                            <p class="mb-4 text-gray-600">Students will use Make Music for practice assignments.</p>
+                            <a href="https://home.makemusic.com/" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm w-full block">Go to Make Music</a>
+                        </div>
+                        <div class="card p-8">
+                            <h2 class="font-serif text-3xl font-bold text-gray-800 mb-4">Required Materials</h2>
+                             <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                <li>Instrument & all accessories (reeds, oil, etc.)</li>
+                                <li>Music Folder with all music</li>
+                                <li>Pencil (not a pen!)</li>
+                                <li>Journal</li>
+                                <li>Towel/Rag (for brass players)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card p-8">
+                        <h2 class="font-serif text-3xl font-bold text-gray-800 mb-4">Forms & Documents</h2>
+                        <p class="mb-4 text-gray-600">Key documents and forms can be found here. The Acknowledgement Form must be signed and returned.</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                             <a href="https://drive.google.com/file/d/1vLFEqkJra4Nk8mk0RPLON09QXvbUANDe/view?usp=sharing" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm w-full">Download Full Syllabus (PDF)</a>
+                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiAj2LW2n-r44tu_WQt_jcLqNsXweDkux8GdZu7X1HkfANmw/viewform?usp=dialog" target="_blank" class="bg-gray-600 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition shadow-sm w-full">Absence Request Form</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="fundraising" class="content-section">
+                <div class="card p-8 md:p-10 max-w-5xl mx-auto">
+                    <h2 class="font-serif text-4xl font-bold text-gray-800 mb-6 text-center">Fundraising Information</h2>
+                    <div class="divider"></div>
+                    <div class="text-center text-gray-600 leading-relaxed">
+                        <p>Details about our upcoming fundraising events and opportunities will be posted here soon. Your support is crucial for the success of our music program, helping us purchase new equipment, music, and provide enriching experiences for our students.</p>
+                        <p class="mt-4">Thank you for your support in helping our music program thrive!</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            const eventData = [
+                { band: 'Beginning Band', event: 'Holiday Concert', date: 'December 16th', type: 'performance' },
+                { band: 'Beginning Band', event: 'End of the Year Concert', date: 'End of May', type: 'performance' },
+                { band: 'Intermediate Band', event: 'Homecoming Performance', date: 'TBD', type: 'performance' },
+                { band: 'Intermediate Band', event: 'Holiday Concert', date: 'December 16th', type: 'performance' },
+                { band: 'Intermediate Band', event: 'Field Trip Performance', date: 'May 8th (TBD)', type: 'performance' },
+                { band: 'Intermediate Band', event: 'End of the Year Concert', date: 'End of May', type: 'performance' },
+                { band: 'Advanced Band', event: 'Homecoming Performance', date: 'TBD', type: 'performance' },
+                { band: 'Advanced Band', event: 'Holiday Concert', date: 'December 16th', type: 'performance' },
+                { band: 'Advanced Band', event: 'SCSBOA Spring Competition', date: 'March (TBD)', type: 'performance' },
+                { band: 'Advanced Band', event: 'Spring POD Concert', date: 'April (TBD)', type: 'performance' },
+                { band: 'Advanced Band', event: 'Field Trip Performance', date: 'May 8th (TBD)', type: 'performance' },
+                { band: 'Advanced Band', event: 'End of the Year Concert', date: 'End of May', type: 'performance' },
+                { band: 'Marching Band', event: 'SCSBOA Chino Band Review', date: 'November 1st', type: 'performance' },
+                { band: 'Marching Band', event: 'SCSBOA Perris Christmas Parade', date: 'December 13th', type: 'performance' },
+                { band: 'Marching Band', event: 'SCSBOA Temple City Parade', date: 'Feb. 21st', type: 'performance' },
+                { band: 'Marching Band', event: 'SCSBOA Swallows Day Parade', date: 'March 21st', type: 'performance' },
+                { band: 'Marching Band', event: 'Spring Elementary Tour', date: 'April (TBA)', type: 'performance' },
+                { band: 'Marching Band', event: 'Rehearsal', date: 'Fridays, 3:15-4:30 pm', type: 'Rehearsal' },
+                { band: 'Intermediate Band', event: 'Rehearsal (Field Trip)', date: 'Mondays, 3:15-4:30 pm', type: 'Rehearsal' },
+            ];
+
+            function populateCalendar() {
+                const beginningPerformances = document.getElementById('beginning-band-performances');
+                const intermediatePerformances = document.getElementById('intermediate-band-performances');
+                const advancedPerformances = document.getElementById('advanced-band-performances');
+                const marchingPerformances = document.getElementById('marching-band-performances');
+                const intAdvRehearsals = document.getElementById('int-adv-rehearsals');
+                const marchingRehearsals = document.getElementById('marching-rehearsals');
+
+                [beginningPerformances, intermediatePerformances, advancedPerformances, marchingPerformances, intAdvRehearsals, marchingRehearsals].forEach(el => el.innerHTML = '');
+
+                eventData.forEach(e => {
+                    const eventCard = `
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:shadow-sm hover:border-amber-400 transition">
+                            <p class="font-bold text-gray-800">${e.event}</p>
+                            <p class="text-sm font-semibold text-gray-600 mt-1">${e.date}</p>
+                        </div>
+                    `;
+                    
+                    if (e.type === 'performance') {
+                        if (e.band === 'Beginning Band') beginningPerformances.innerHTML += eventCard;
+                        else if (e.band === 'Intermediate Band') intermediatePerformances.innerHTML += eventCard;
+                        else if (e.band === 'Advanced Band') advancedPerformances.innerHTML += eventCard;
+                        else if (e.band === 'Marching Band') marchingPerformances.innerHTML += eventCard;
+                    } else if (e.type === 'Rehearsal') {
+                        if (e.band === 'Marching Band') {
+                             marchingRehearsals.innerHTML += eventCard;
+                        } else {
+                             intAdvRehearsals.innerHTML += eventCard;
+                        }
+                    }
+                });
+            }
+
+            function setActiveTab(tabId) {
+                tabs.forEach(tab => {
+                    tab.classList.toggle('tab-active', tab.dataset.tab === tabId);
+                });
+                contentSections.forEach(section => {
+                    section.classList.toggle('active', section.id === tabId);
+                });
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.dataset.tab;
+                    setActiveTab(tabId);
+                    if (tabId === 'policies') {
+                        renderGradingChart();
+                    }
+                });
+            });
+
+            let gradingChartInstance = null;
+            function renderGradingChart() {
+                if (gradingChartInstance) {
+                    gradingChartInstance.destroy();
+                }
+                const ctx = document.getElementById('gradingChart').getContext('2d');
+                gradingChartInstance = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Concert Performances', 'Assignments', 'Journal', 'Playing/Vocab Tests'],
+                        datasets: [{
+                            data: [40, 20, 10, 30],
+                            backgroundColor: ['#4338ca', '#16a34a', '#f59e0b', '#4b5563'],
+                            borderColor: '#ffffff',
+                            borderWidth: 4,
+                            hoverOffset: 10
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { 
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20,
+                                    font: {
+                                        family: "'Roboto', sans-serif"
+                                    }
+                                }
+                             },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) { label += ': '; }
+                                        if (context.parsed !== null) { label += context.parsed + '%'; }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            setActiveTab('calendar');
+            populateCalendar();
+
+        });
+    </script>
+</body>
+</html>
