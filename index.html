@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Vintage Gold & Charcoal -->
-    <!-- Application Structure Plan: A tab-based single-page application (SPA) is used to organize information into logical sections (Home, Calendar, Policies, Resources, Fundraising). This structure is intuitive for parents, allowing them to quickly find specific information like performance dates or uniform requirements without scrolling through a long document. The core interaction is tab navigation to switch content views. -->
+    <!-- Application Structure Plan: A tab-based single-page application (SPA) is used to organize information into logical sections (Home, Calendar, Policies, Resources, Fundraising, Staff). This structure is intuitive for parents, allowing them to quickly find specific information like performance dates or uniform requirements without scrolling through a long document. The core interaction is tab navigation to switch content views. -->
     <!-- Visualization & Content Choices: 
         - Report Info: Grading Categories. Goal: Compare/Inform. Viz/Method: Chart.js Donut Chart. Interaction: Hover tooltips. Justification: A donut chart provides a much faster and more intuitive understanding of grade composition than a text list, which is ideal for busy parents. Library: Chart.js/Canvas.
         - Report Info: Performance & Rehearsal Dates. Goal: Organize/Inform. Viz/Method: Column-based layout for each band. Interaction: None needed. Justification: Separating events into dedicated columns for each band offers maximum clarity and removes the need for user filtering, making the schedule instantly readable. Method: Vanilla JS DOM manipulation.
@@ -72,6 +72,7 @@
             <div data-tab="policies" class="tab">Policies & Uniforms</div>
             <div data-tab="resources" class="tab">Resources</div>
             <div data-tab="fundraising" class="tab">Fundraising</div>
+            <div data-tab="staff" class="tab">Staff</div>
         </nav>
 
         <main id="content-container">
@@ -278,6 +279,43 @@
                     <div class="text-center text-gray-600 leading-relaxed">
                         <p>Details about our upcoming fundraising events and opportunities will be posted here soon. Your support is crucial for the success of our music program, helping us purchase new equipment, music, and provide enriching experiences for our students.</p>
                         <p class="mt-4">Thank you for your support in helping our music program thrive!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="staff" class="content-section">
+                <div class="card p-8 md:p-10 max-w-7xl mx-auto">
+                    <h2 class="font-serif text-4xl font-bold text-gray-800 mb-6 text-center">Meet the Staff</h2>
+                    <div class="divider"></div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <img src="https://placehold.co/200x200/eeeeee/333333?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
+                            <h3 class="font-serif text-2xl font-bold text-gray-800">Colton Rafanan</h3>
+                            <p class="text-lg text-gray-500 mt-1">Band Director</p>
+                            <div class="mt-2 pt-2 border-t border-gray-200 inline-block">
+                                <p class="text-sm text-gray-600">crafanan@valverde.edu</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://placehold.co/200x200/eeeeee/333333?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
+                            <h3 class="font-serif text-2xl font-bold text-gray-800">Ruben Blanco</h3>
+                            <p class="text-lg text-gray-500 mt-1">Color Guard Caption Head</p>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://placehold.co/200x200/eeeeee/333333?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
+                            <h3 class="font-serif text-2xl font-bold text-gray-800">Ethan Eldred</h3>
+                            <p class="text-lg text-gray-500 mt-1">Percussion Caption Head</p>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://placehold.co/200x200/eeeeee/333333?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
+                            <h3 class="font-serif text-2xl font-bold text-gray-800">Marissa Vickrey</h3>
+                            <p class="text-lg text-gray-500 mt-1">Visual & Woodwind Tech</p>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://placehold.co/200x200/eeeeee/333333?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
+                            <h3 class="font-serif text-2xl font-bold text-gray-800">Allison Rafanan</h3>
+                            <p class="text-lg text-gray-500 mt-1">Drum Major Instructor & Visual Tech</p>
+                        </div>
                     </div>
                 </div>
             </section>
