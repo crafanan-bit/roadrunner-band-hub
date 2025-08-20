@@ -43,6 +43,10 @@
             color: white;
             box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
         }
+        .mobile-tab-active {
+            background-color: #0d3b66;
+            color: white;
+        }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -56,6 +60,7 @@
                     <div class="flex-shrink-0">
                         <h1 class="text-xl font-bold text-gray-800">TRMS Music Program</h1>
                     </div>
+                    <!-- Desktop Navigation -->
                     <nav class="hidden md:flex items-center space-x-4">
                         <div data-tab="home" class="tab tab-active">Home</div>
                         <div data-tab="calendar" class="tab">Calendar</div>
@@ -64,6 +69,25 @@
                         <div data-tab="staff" class="tab">Staff</div>
                         <div data-tab="fundraising" class="tab">Fundraising</div>
                     </nav>
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden">
+                        <button id="mobile-menu-button" class="text-gray-800 hover:text-blue-600 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#" data-tab="home" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Home</a>
+                    <a href="#" data-tab="calendar" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Calendar</a>
+                    <a href="#" data-tab="parent-info" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Parent Info</a>
+                    <a href="#" data-tab="student-info" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Student Info</a>
+                    <a href="#" data-tab="staff" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Staff</a>
+                    <a href="#" data-tab="fundraising" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Fundraising</a>
                 </div>
             </div>
         </header>
@@ -80,9 +104,24 @@
                      <p class="text-gray-600 leading-relaxed mb-4">Welcome to the 2025-2026 school year! My name is Colton Rafanan and I'm proud to serve as the Band Director of this program. Our goal is to guide students to success through musicianship, building self-esteem, social skills, and creativity in a safe learning environment. I look forward to a year of hard-work, learning, and fun!</p>
                 </div>
                 <div class="bg-white p-8 rounded-lg shadow-sm mt-8">
-                    <h3 class="text-2xl font-bold mb-4 text-center">Upcoming Events</h3>
-                    <div id="upcoming-events" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <!-- Upcoming events will be populated here by JS -->
+                    <h3 class="text-2xl font-bold mb-4 text-center">Upcoming Performances</h3>
+                    <div id="upcoming-events" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div>
+                            <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Beginning Band</h4>
+                            <div id="home-beginning-performances" class="space-y-4"></div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Intermediate Band</h4>
+                            <div id="home-intermediate-performances" class="space-y-4"></div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Advanced Band</h4>
+                            <div id="home-advanced-performances" class="space-y-4"></div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Marching Band</h4>
+                            <div id="home-marching-performances" class="space-y-4"></div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -107,7 +146,7 @@
                     <div class="flex justify-center border-b mb-6">
                         <div data-sub-tab="communication" class="sub-tab sub-tab-active">Communication</div>
                         <div data-sub-tab="uniforms" class="sub-tab">Uniforms</div>
-                        <div data-sub-tab="boosters" class="sub-tab">Band Boosters</div>
+                        <div data-sub-tab="boosters" class="sub-tab">Band Boosters & Volunteer</div>
                         <div data-sub-tab="policies" class="sub-tab">Syllabus & Policies</div>
                     </div>
                     <div id="parent-sub-content">
@@ -153,7 +192,8 @@
                         </div>
                         <div data-sub-tab-content="boosters" class="sub-content-section">
                              <div class="text-center text-gray-600">
-                                <p>Information about the Band Boosters program and opportunities for volunteering will be posted here soon. Parent involvement is crucial to the success of our program!</p>
+                                <p class="mb-6">Parent involvement is crucial to the success of our program! Please consider volunteering by filling out the interest form below.</p>
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdj2dSAQcqZXjah29xDxz3fe_Ikp-H_lWjdL87XToZnOc0YSA/viewform?usp=dialog" target="_blank" class="bg-blue-600 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition shadow-sm inline-block">Volunteer Interest Form</a>
                             </div>
                         </div>
                         <div data-sub-tab-content="policies" class="sub-content-section">
@@ -275,6 +315,9 @@
             const contentSections = document.querySelectorAll('.content-section');
             const subTabs = document.querySelectorAll('.sub-tab');
             const subContentSections = document.querySelectorAll('.sub-content-section');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileTabs = document.querySelectorAll('.mobile-tab');
 
             const eventData = [
                 { band: 'Beginning Band', event: 'Holiday Concert', date: 'December 16th', type: 'performance' },
@@ -299,18 +342,53 @@
             ];
 
             function populateContent() {
-                const upcomingEventsContainer = document.getElementById('upcoming-events');
-                if(upcomingEventsContainer) {
-                    upcomingEventsContainer.innerHTML = '';
-                    eventData.slice(0, 4).forEach(e => {
-                        const eventCard = `<div class="bg-blue-50 p-4 rounded-lg border border-blue-200"><p class="font-semibold" style="color:#0d3b66;">${e.event}</p><p class="text-sm" style="color:#0d3b66;">${e.band}</p><p class="text-sm text-gray-500 mt-1">${e.date}</p></div>`;
-                        upcomingEventsContainer.innerHTML += eventCard;
-                    });
+                const homeBeginning = document.getElementById('home-beginning-performances');
+                const homeIntermediate = document.getElementById('home-intermediate-performances');
+                const homeAdvanced = document.getElementById('home-advanced-performances');
+                const homeMarching = document.getElementById('home-marching-performances');
+
+                if(homeBeginning) {
+                    [homeBeginning, homeIntermediate, homeAdvanced, homeMarching].forEach(el => el.innerHTML = '');
+
+                    const performances = eventData.filter(e => e.type === 'performance');
+
+                    const dateToSortable = (dateStr) => {
+                        const monthMap = { 'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12 };
+                        const year = (Object.keys(monthMap).slice(0, 7).some(m => dateStr.includes(m))) ? 2026 : 2025;
+                        if (dateStr.toLowerCase().includes('homecoming')) return 20250930;
+                        if (dateStr.includes('TBD')) return year * 10000 + 1231;
+                        const parts = dateStr.replace(/st|nd|rd|th/g, '').split(' ');
+                        const month = monthMap[parts[0].substring(0,3)];
+                        const day = parseInt(parts[1]);
+                        return year * 10000 + month * 100 + day;
+                    };
+                    
+                    const beginningPerformances = performances.filter(p => p.band === 'Beginning Band').sort((a,b) => dateToSortable(a.date) - dateToSortable(b.date));
+                    const intermediatePerformances = performances.filter(p => p.band === 'Intermediate Band').sort((a,b) => dateToSortable(a.date) - dateToSortable(b.date));
+                    const advancedPerformances = performances.filter(p => p.band === 'Advanced Band').sort((a,b) => dateToSortable(a.date) - dateToSortable(b.date));
+                    const marchingPerformances = performances.filter(p => p.band === 'Marching Band').sort((a,b) => dateToSortable(a.date) - dateToSortable(b.date));
+
+                    const renderEvents = (container, events) => {
+                         events.forEach(e => {
+                            const eventCard = `
+                                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 h-full">
+                                    <p class="font-semibold" style="color:#0d3b66;">${e.event}</p>
+                                    <p class="text-sm text-gray-500 mt-1">${e.date}</p>
+                                </div>`;
+                            container.innerHTML += eventCard;
+                        });
+                    };
+
+                    renderEvents(homeBeginning, beginningPerformances);
+                    renderEvents(homeIntermediate, intermediatePerformances);
+                    renderEvents(homeAdvanced, advancedPerformances);
+                    renderEvents(homeMarching, marchingPerformances);
                 }
             }
 
             function setActiveTab(tabId) {
                 tabs.forEach(tab => tab.classList.toggle('tab-active', tab.dataset.tab === tabId));
+                mobileTabs.forEach(tab => tab.classList.toggle('mobile-tab-active', tab.dataset.tab === tabId));
                 contentSections.forEach(section => section.classList.toggle('active', section.id === tabId));
             }
 
@@ -322,6 +400,22 @@
                         renderGradingChart();
                     }
                 });
+            });
+
+            mobileTabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabId = tab.dataset.tab;
+                    setActiveTab(tabId);
+                    if (tabId === 'parent-info') {
+                        renderGradingChart();
+                    }
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
 
             subTabs.forEach(subTab => {
