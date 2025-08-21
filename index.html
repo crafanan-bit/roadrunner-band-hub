@@ -64,8 +64,8 @@
                     <nav class="hidden md:flex items-center space-x-4">
                         <div data-tab="home" class="tab tab-active">Home</div>
                         <div data-tab="calendar" class="tab">Calendar</div>
-                        <div data-tab="parent-info" class="tab">Parent Info</div>
-                        <div data-tab="student-info" class="tab">Student Info</div>
+                        <div data-tab="parent" class="tab">Parent</div>
+                        <div data-tab="student" class="tab">Student</div>
                         <div data-tab="staff" class="tab">Staff</div>
                         <div data-tab="fundraising" class="tab">Fundraising</div>
                     </nav>
@@ -84,8 +84,8 @@
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="#" data-tab="home" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Home</a>
                     <a href="#" data-tab="calendar" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Calendar</a>
-                    <a href="#" data-tab="parent-info" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Parent Info</a>
-                    <a href="#" data-tab="student-info" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Student Info</a>
+                    <a href="#" data-tab="parent" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Parent</a>
+                    <a href="#" data-tab="student" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Student</a>
                     <a href="#" data-tab="staff" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Staff</a>
                     <a href="#" data-tab="fundraising" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Fundraising</a>
                 </div>
@@ -140,7 +140,7 @@
                 </div>
             </section>
 
-            <section id="parent-info" class="content-section">
+            <section id="parent" class="content-section">
                 <div class="bg-white p-8 rounded-lg shadow-sm">
                     <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Parent & Guardian Information</h2>
                     <div class="flex justify-center border-b mb-6">
@@ -221,7 +221,7 @@
                 </div>
             </section>
 
-            <section id="student-info" class="content-section">
+            <section id="student" class="content-section">
                 <div class="space-y-8">
                     <div class="bg-white p-8 rounded-lg shadow-sm">
                         <h2 class="text-3xl font-bold text-gray-800 mb-4">Required Materials</h2>
@@ -259,38 +259,50 @@
             
             <section id="staff" class="content-section">
                 <div class="bg-white p-8 rounded-lg shadow-sm">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Meet the Staff</h2>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="text-center bg-gray-50 p-6 rounded-lg">
-                            <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
-                            <h3 class="text-2xl font-bold text-gray-800">Colton Rafanan</h3>
-                            <p class="text-lg text-blue-600 font-semibold mt-1">Band Director</p>
-                            <p class="text-sm text-gray-600 mt-2">crafanan@valverde.edu</p>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Staff Information</h2>
+                    <div class="flex justify-center border-b mb-6">
+                        <div data-sub-tab="meet-staff" class="sub-tab sub-tab-active">Meet the Staff</div>
+                        <div data-sub-tab="staff-info" class="sub-tab">Staff Info</div>
+                    </div>
+                    <div id="staff-sub-content">
+                        <div data-sub-tab-content="meet-staff" class="sub-content-section active">
+                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <div class="text-center bg-gray-50 p-6 rounded-lg">
+                                    <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
+                                    <h3 class="text-2xl font-bold text-gray-800">Colton Rafanan</h3>
+                                    <p class="text-lg text-blue-600 font-semibold mt-1">Band Director</p>
+                                    <p class="text-sm text-gray-600 mt-2">crafanan@valverde.edu</p>
+                                </div>
+                                <div class="text-center bg-gray-50 p-6 rounded-lg">
+                                    <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
+                                    <h3 class="text-2xl font-bold text-gray-800">Ruben Blanco</h3>
+                                    <p class="text-lg text-blue-600 font-semibold mt-1">Color Guard Caption Head</p>
+                                </div>
+                                <div class="text-center bg-gray-50 p-6 rounded-lg">
+                                    <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
+                                    <h3 class="text-2xl font-bold text-gray-800">Ethan Eldred</h3>
+                                    <p class="text-lg text-blue-600 font-semibold mt-1">Percussion Caption Head</p>
+                                </div>
+                                <div class="text-center bg-gray-50 p-6 rounded-lg">
+                                    <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
+                                    <h3 class="text-2xl font-bold text-gray-800">Marissa Vickrey</h3>
+                                    <p class="text-lg text-blue-600 font-semibold mt-1">Visual & Woodwind Tech</p>
+                                </div>
+                                <div class="text-center bg-gray-50 p-6 rounded-lg">
+                                    <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
+                                    <h3 class="text-2xl font-bold text-gray-800">Allison Rafanan</h3>
+                                    <p class="text-lg text-blue-600 font-semibold mt-1">Drum Major Instructor & Visual Tech</p>
+                                </div>
+                                <div class="text-center bg-gray-50 p-6 rounded-lg">
+                                    <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
+                                    <h3 class="text-2xl font-bold text-gray-800">Ryan Vickrey</h3>
+                                    <p class="text-lg text-blue-600 font-semibold mt-1">Drum Major Instructor</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-center bg-gray-50 p-6 rounded-lg">
-                            <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
-                            <h3 class="text-2xl font-bold text-gray-800">Ruben Blanco</h3>
-                            <p class="text-lg text-blue-600 font-semibold mt-1">Color Guard Caption Head</p>
-                        </div>
-                        <div class="text-center bg-gray-50 p-6 rounded-lg">
-                            <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
-                            <h3 class="text-2xl font-bold text-gray-800">Ethan Eldred</h3>
-                            <p class="text-lg text-blue-600 font-semibold mt-1">Percussion Caption Head</p>
-                        </div>
-                        <div class="text-center bg-gray-50 p-6 rounded-lg">
-                            <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
-                            <h3 class="text-2xl font-bold text-gray-800">Marissa Vickrey</h3>
-                            <p class="text-lg text-blue-600 font-semibold mt-1">Visual & Woodwind Tech</p>
-                        </div>
-                        <div class="text-center bg-gray-50 p-6 rounded-lg">
-                            <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
-                            <h3 class="text-2xl font-bold text-gray-800">Allison Rafanan</h3>
-                            <p class="text-lg text-blue-600 font-semibold mt-1">Drum Major Instructor & Visual Tech</p>
-                        </div>
-                        <div class="text-center bg-gray-50 p-6 rounded-lg">
-                            <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
-                            <h3 class="text-2xl font-bold text-gray-800">Ryan Vickrey</h3>
-                            <p class="text-lg text-blue-600 font-semibold mt-1">Drum Major Instructor</p>
+                        <div data-sub-tab-content="staff-info" class="sub-content-section text-center">
+                            <p class="mb-6 text-gray-600">Click the button below to view the staff rehearsal plan and contact information.</p>
+                            <a href="https://docs.google.com/spreadsheets/d/10ZD53Eq3Io6dyb4iAi0TTK2eU-0nynPQxUnF4xrPtPM/edit?usp=sharing" target="_blank" class="bg-blue-600 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition shadow-sm inline-block">View Rehearsal Plan</a>
                         </div>
                     </div>
                 </div>
@@ -476,3 +488,4 @@
     </script>
 </body>
 </html>
+
