@@ -310,10 +310,19 @@
             
             <section id="fundraising" class="content-section">
                 <div class="bg-white p-8 md:p-12 rounded-lg shadow-sm max-w-5xl mx-auto">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Fundraising Information</h2>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Current Fundraiser: Chipotle Night!</h2>
                     <div class="text-center text-gray-600 leading-relaxed">
-                        <p>Details about our upcoming fundraising events and opportunities will be posted here soon. Your support is crucial for the success of our music program, helping us purchase new equipment, music, and provide enriching experiences for our students.</p>
-                        <p class="mt-4">Thank you for your support in helping our music program thrive!</p>
+                        <p class="text-lg">Support the TRMS Band Program by dining at Chipotle!</p>
+                        <div class="my-6 bg-gray-50 border-l-4 border-yellow-500 p-6 rounded-r-lg inline-block">
+                            <p class="font-bold text-xl text-gray-800">Wednesday, September 24th</p>
+                            <p class="text-md">4:00 PM - 8:00 PM</p>
+                            <p class="text-md mt-2">22430 Van Buren Blvd, Riverside, CA</p>
+                        </div>
+                        <p class="max-w-xl mx-auto">Mention the fundraiser or show the flyer when you order, and 25% of the sales will be donated to our program. If ordering online for pickup, use the code <code class="bg-gray-200 text-blue-800 font-bold p-1 rounded">HM2EDYH</code>.</p>
+                        <div class="flex justify-center gap-4 mt-8">
+                             <a href="#" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm">Download English Flyer (PDF)</a>
+                             <a href="#" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm">Download Spanish Flyer (PDF)</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -334,11 +343,11 @@
             const eventData = [
                 { band: 'Beginning Band', event: 'Holiday Concert', date: 'December 16th', type: 'performance' },
                 { band: 'Beginning Band', event: 'End of the Year Concert', date: 'End of May', type: 'performance' },
-                { band: 'Intermediate Band', event: 'Homecoming Performance', date: 'TBD', type: 'performance' },
+                { band: 'Intermediate Band', event: 'Homecoming Performance', date: 'October 17th', type: 'performance' },
                 { band: 'Intermediate Band', event: 'Holiday Concert', date: 'December 16th', type: 'performance' },
                 { band: 'Intermediate Band', event: 'Field Trip Performance', date: 'May 8th (TBD)', type: 'performance' },
                 { band: 'Intermediate Band', event: 'End of the Year Concert', date: 'End of May', type: 'performance' },
-                { band: 'Advanced Band', event: 'Homecoming Performance', date: 'TBD', type: 'performance' },
+                { band: 'Advanced Band', event: 'Homecoming Performance', date: 'October 17th', type: 'performance' },
                 { band: 'Advanced Band', event: 'Holiday Concert', date: 'December 16th', type: 'performance' },
                 { band: 'Advanced Band', event: 'SCSBOA Spring Competition', date: 'March (TBD)', type: 'performance' },
                 { band: 'Advanced Band', event: 'Spring POD Concert', date: 'April (TBD)', type: 'performance' },
@@ -408,7 +417,7 @@
                 tab.addEventListener('click', () => {
                     const tabId = tab.dataset.tab;
                     setActiveTab(tabId);
-                    if (tabId === 'parent-info') {
+                    if (tabId === 'parent') {
                         renderGradingChart();
                     }
                 });
@@ -419,7 +428,7 @@
                     e.preventDefault();
                     const tabId = tab.dataset.tab;
                     setActiveTab(tabId);
-                    if (tabId === 'parent-info') {
+                    if (tabId === 'parent') {
                         renderGradingChart();
                     }
                     mobileMenu.classList.add('hidden');
@@ -432,11 +441,16 @@
 
             subTabs.forEach(subTab => {
                 subTab.addEventListener('click', () => {
+                    const parent = subTab.closest('[id$="-sub-content"]').previousElementSibling;
+                    const allSubTabsInGroup = parent.querySelectorAll('.sub-tab');
+                    const allSubContentInGroup = subTab.closest('[id$="-sub-content"]').querySelectorAll('.sub-content-section');
+                    
                     const subTabId = subTab.dataset.subTab;
-                    subTabs.forEach(st => st.classList.remove('sub-tab-active'));
+
+                    allSubTabsInGroup.forEach(st => st.classList.remove('sub-tab-active'));
                     subTab.classList.add('sub-tab-active');
 
-                    subContentSections.forEach(content => {
+                    allSubContentInGroup.forEach(content => {
                         content.classList.toggle('active', content.dataset.subTabContent === subTabId);
                     });
                 });
@@ -488,4 +502,5 @@
     </script>
 </body>
 </html>
+
 
