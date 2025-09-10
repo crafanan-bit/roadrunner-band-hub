@@ -441,17 +441,29 @@
 
             subTabs.forEach(subTab => {
                 subTab.addEventListener('click', () => {
-                    const parent = subTab.closest('[id$="-sub-content"]').previousElementSibling;
-                    const allSubTabsInGroup = parent.querySelectorAll('.sub-tab');
-                    const allSubContentInGroup = subTab.closest('[id$="-sub-content"]').querySelectorAll('.sub-content-section');
-                    
+                    // Find the closest parent content section (like 'parent' or 'staff')
+                    const parentSection = subTab.closest('.content-section');
+                    if (!parentSection) return;
+
+                    // Get the ID of the sub-tab that was clicked
                     const subTabId = subTab.dataset.subTab;
 
-                    allSubTabsInGroup.forEach(st => st.classList.remove('sub-tab-active'));
+                    // Get all sub-tabs and sub-content within that specific section
+                    const allSubTabsInGroup = parentSection.querySelectorAll('.sub-tab');
+                    const allSubContentInGroup = parentSection.querySelectorAll('.sub-content-section');
+
+                    // Handle the sub-tabs
+                    allSubTabsInGroup.forEach(st => {
+                        st.classList.remove('sub-tab-active');
+                    });
                     subTab.classList.add('sub-tab-active');
 
+                    // Handle the sub-content
                     allSubContentInGroup.forEach(content => {
-                        content.classList.toggle('active', content.dataset.subTabContent === subTabId);
+                        content.classList.remove('active');
+                        if (content.dataset.subTabContent === subTabId) {
+                            content.classList.add('active');
+                        }
                     });
                 });
             });
@@ -502,5 +514,6 @@
     </script>
 </body>
 </html>
+
 
 
