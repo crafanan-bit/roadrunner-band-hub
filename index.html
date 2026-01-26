@@ -9,14 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: School Colors (Blue & Gold) -->
-    <!-- Application Structure Plan: Inspired by bandsofsantiagosharks.org, this is a single-page application using tabs that mimic a multi-page site structure. The default view is a "Home" dashboard with a hero image, welcome message, and key highlights. Information is now organized into audience-specific tabs (Parent Info, Student Info) for clarity. -->
-    <!-- Visualization & Content Choices: 
-         - Report Info: Grading Categories. Goal: Compare/Inform. Viz/Method: Chart.js Donut Chart. Interaction: Hover tooltips. Justification: A donut chart provides a much faster and more intuitive understanding of grade composition than a text list. Library: Chart.js/Canvas.
-         - Report Info: Performance & Rehearsal Dates. Goal: Organize/Inform. Viz/Method: Column-based layout for each band within a dedicated "Calendar" tab. Interaction: None. Justification: Separating events into dedicated columns for each band offers maximum clarity. Method: Vanilla JS DOM manipulation.
-         - Report Info: Uniforms and Materials. Goal: Inform. Viz/Method: Styled cards with columns. Interaction: None. Justification: Using cards with clear headings makes logistical information easy to find. Method: HTML/Tailwind.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #f3f4f6; }
         .tab { position: relative; cursor: pointer; padding: 1rem; transition: color 0.3s ease; }
@@ -60,7 +52,6 @@
                     <div class="flex-shrink-0">
                         <h1 class="text-xl font-bold text-gray-800">TRMS Music Program</h1>
                     </div>
-                    <!-- Desktop Navigation -->
                     <nav class="hidden md:flex items-center space-x-4">
                         <div data-tab="home" class="tab tab-active">Home</div>
                         <div data-tab="calendar" class="tab">Calendar</div>
@@ -69,7 +60,6 @@
                         <div data-tab="staff" class="tab">Staff</div>
                         <div data-tab="fundraising" class="tab">Fundraising</div>
                     </nav>
-                    <!-- Mobile Menu Button -->
                     <div class="md:hidden">
                         <button id="mobile-menu-button" class="text-gray-800 hover:text-blue-600 focus:outline-none">
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -79,7 +69,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Mobile Menu -->
             <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="#" data-tab="home" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Home</a>
@@ -105,33 +94,68 @@
                      <p class="text-gray-600 leading-relaxed mb-4">Welcome to the 2025-2026 school year! My name is Colton Rafanan and I'm proud to serve as the Band Director of this program. Our goal is to guide students to success through musicianship, building self-esteem, social skills, and creativity in a safe learning environment. I look forward to a year of hard-work, learning, and fun!</p>
                 </div>
 
-                <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg mt-8">
-                    <h3 class="font-bold text-xl text-blue-800 mb-3">Important Rehearsal Schedule Update</h3>
-                    <div class="text-gray-700 space-y-2">
-                        <p><strong class="font-semibold">Attention Advanced and Intermediate Band Students:</strong> There will be no regular rehearsals on Monday, October 20th and Monday, October 27th.</p>
-                        <p>These dates will now be dedicated <strong class="font-semibold">Marching Band rehearsals.</strong></p>
-                        <p>Additionally, all Monday and Friday Marching Band rehearsals from <strong class="font-semibold">October 20th through October 31st</strong> will be extended. The new rehearsal time will be from <strong class="font-semibold">3:15 PM to 5:00 PM.</strong></p>
-                    </div>
-                </div>
-
                 <div class="bg-white p-8 rounded-lg shadow-sm mt-8">
                     <h3 class="text-2xl font-bold mb-4 text-center">Upcoming Performances</h3>
                     <div id="upcoming-events" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div>
                             <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Beginning Band</h4>
-                            <div id="home-beginning-performances" class="space-y-4"></div>
+                            <div id="home-beginning-performances" class="space-y-4">
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">End of the Year Concert</div>
+                                    <div class="text-sm text-gray-600">TRMS MPR</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">May 18, 2026</div>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Intermediate Band</h4>
-                            <div id="home-intermediate-performances" class="space-y-4"></div>
+                            <div id="home-intermediate-performances" class="space-y-4">
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">End of the Year Concert</div>
+                                    <div class="text-sm text-gray-600">TRMS MPR</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">May 18, 2026</div>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Advanced Band</h4>
-                            <div id="home-advanced-performances" class="space-y-4"></div>
+                            <div id="home-advanced-performances" class="space-y-4">
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">Superintendent Awards</div>
+                                    <div class="text-sm text-gray-600">Citrus Hill High School</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Feb 17, 2026</div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">SCSBOA Festival (Tentative)</div>
+                                    <div class="text-sm text-gray-600">Moreno Valley</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Mar 7, 2026</div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">SCSBOA Festival</div>
+                                    <div class="text-sm text-gray-600">Perris</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Mar 13, 2026</div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">End of the Year Concert</div>
+                                    <div class="text-sm text-gray-600">TRMS MPR</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">May 18, 2026</div>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Marching Band</h4>
-                            <div id="home-marching-performances" class="space-y-4"></div>
+                            <div id="home-marching-performances" class="space-y-4">
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">Camellia Festival Parade</div>
+                                    <div class="text-sm text-gray-600">Temple City</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Feb 21, 2026</div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">Swallows Day Parade</div>
+                                    <div class="text-sm text-gray-600">San Juan Capistrano</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Mar 21, 2026</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,7 +167,7 @@
                     <p class="text-center text-gray-500 mb-8">The most up-to-date information can be found on our live Google Calendar.</p>
                     <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-12">
                          <h3 class="text-2xl font-bold mb-4 text-gray-800 text-center">Live Band Calendar</h3>
-                         <div class="google-calendar-embed">
+                         <div class="google-calendar-embed flex justify-center">
                              <iframe src="https://calendar.google.com/calendar/embed?src=c_a7badca8a482e6089ecf028ba80183cee797ca9e538e03be6c028d9ce2f96fe2%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
                          </div>
                          <a href="https://calendar.google.com/calendar/u/0?cid=Y19hN2JhZGNhOGE0ODJlNjA4OWVjZjAyOGJhODAxODNjZWU3OTdjYTllNTM4ZTAzYmU2YzAyOGQ5Y2UyZjk2ZmUyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm w-full block mt-6">View Full Calendar in New Tab</a>
@@ -154,11 +178,11 @@
             <section id="parent" class="content-section">
                 <div class="bg-white p-8 rounded-lg shadow-sm">
                     <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Parent & Guardian Information</h2>
-                    <div class="flex justify-center border-b mb-6">
-                        <div data-sub-tab="communication" class="sub-tab sub-tab-active">Communication</div>
-                        <div data-sub-tab="uniforms" class="sub-tab">Uniforms</div>
-                        <div data-sub-tab="boosters" class="sub-tab">Band Boosters & Volunteer</div>
-                        <div data-sub-tab="policies" class="sub-tab">Syllabus & Policies</div>
+                    <div class="flex justify-center border-b mb-6 overflow-x-auto">
+                        <div data-sub-tab="communication" class="sub-tab sub-tab-active whitespace-nowrap">Communication</div>
+                        <div data-sub-tab="uniforms" class="sub-tab whitespace-nowrap">Uniforms</div>
+                        <div data-sub-tab="boosters" class="sub-tab whitespace-nowrap">Band Boosters & Volunteer</div>
+                        <div data-sub-tab="policies" class="sub-tab whitespace-nowrap">Syllabus & Policies</div>
                     </div>
                     <div id="parent-sub-content">
                         <div data-sub-tab-content="communication" class="sub-content-section active text-center">
@@ -195,7 +219,6 @@
                                 <a href="https://drive.google.com/file/d/1cr-Rvh0iu6DKNuShggLffQ0cteoGdCFl/view?usp=sharing" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm w-full block">
                                     November 1st Chino Band Review Schedule
                                 </a>
-                                <!-- Future letters will be added here -->
                             </div>
                         </div>
                         <div data-sub-tab-content="uniforms" class="sub-content-section">
@@ -377,218 +400,103 @@
                     <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Upcoming Fundraiser: Holiday Pastries</h2>
                      <div class="text-left text-gray-600 leading-relaxed max-w-2xl mx-auto">
                         <p class="text-lg text-center mb-6">This is our last big opportunity for 2025! Each pastry sells for $20, and our program will earn $7-8 per pastry depending on total group sales.</p>
-                        
-                        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6">
-                             <h3 class="font-bold text-lg text-gray-800 mb-2">Profit Tiers:</h3>
-                             <ul class="list-disc list-inside">
-                                 <li><span class="font-semibold">Sell more than 250 pastries:</span> Earn $8 per pastry (40%)</li>
-                                 <li><span class="font-semibold">Sell less than 250 pastries:</span> Earn $7 per pastry (35%)</li>
-                             </ul>
-                        </div>
-
-                        <div class="bg-gray-50 p-6 rounded-lg border">
-                             <h3 class="font-bold text-lg text-gray-800 mb-2">Important Dates (Fall 2025 Run 10):</h3>
-                            <ul class="list-disc list-inside">
-                                <li><span class="font-semibold">Start Sales:</span> On or before Tuesday, November 4th</li>
-                                <li><span class="font-semibold">End Sales:</span> Tuesday, November 18th</li>
-                                <li><span class="font-semibold">Submit Orders:</span> By Thursday, November 20th</li>
-                                <li><span class="font-semibold">Delivery Week:</span> December 15th - 18th</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="text-center mt-8">
-                            <a href="https://drive.google.com/file/d/1un1Takho4efroYCfmjAcbL54lOy4AUEd/view?usp=sharing" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm">Download Pastry Flyer (PDF)</a>
-                        </div>
-                    </div>
+                     </div>
                 </div>
             </section>
-
+            
         </main>
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-
-        // --- DATA ---
-        const eventData = [
-            // Beginning Band
-            { band: 'Beginning Band', event: 'Holiday Concert', date: 'December 16th', type: 'performance' },
-            { band: 'Beginning Band', event: 'End of the Year Concert', date: 'End of May', type: 'performance' },
-            // Intermediate Band
-            { band: 'Intermediate Band', event: 'Holiday Concert', date: 'December 16th', type: 'performance' },
-            { band: 'Intermediate Band', event: 'Field Trip Performance', date: 'May 8th', type: 'performance' },
-            { band: 'Intermediate Band', event: 'End of the Year Concert', date: 'End of May', type: 'performance' },
-            // Advanced Band
-            { band: 'Advanced Band', event: 'Holiday Concert', date: 'December 16th', type: 'performance' },
-            { band: 'Advanced Band', event: 'SCSBOA Spring Competition @ Citrus Hill HS', date: 'March 13th', type: 'performance' },
-            { band: 'Advanced Band', event: 'Spring POD Concert', date: 'April (TBD)', type: 'performance' },
-            { band: 'Advanced Band', event: 'Field Trip Performance', date: 'May 8th', type: 'performance' },
-            { band: 'Advanced Band', event: 'End of the Year Concert', date: 'End of May', type: 'performance' },
-            // Marching Band
-            { band: 'Marching Band', event: 'Citrus Hill Homecoming', date: 'October 17th', type: 'performance'},
-            { band: 'Marching Band', event: 'Chino Band Review', date: 'November 1st', type: 'performance'},
-            { band: 'Marching Band', event: 'Perris Holiday Parade', date: 'December 13th', type: 'performance'},
-        ];
-
-
-        // --- TAB NAVIGATION ---
-        const desktopTabs = document.querySelectorAll('.tab');
-        const mobileTabs = document.querySelectorAll('.mobile-tab');
-        const contentSections = document.querySelectorAll('.content-section');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        function switchTab(targetTab) {
-            desktopTabs.forEach(t => t.classList.remove('tab-active'));
-            document.querySelector(`.tab[data-tab="${targetTab}"]`).classList.add('tab-active');
-            
-            mobileTabs.forEach(t => t.classList.remove('mobile-tab-active'));
-            const activeMobileTab = document.querySelector(`.mobile-tab[data-tab="${targetTab}"]`);
-            if (activeMobileTab) activeMobileTab.classList.add('mobile-tab-active');
-
-
-            contentSections.forEach(section => {
-                section.classList.remove('active');
-                if (section.id === targetTab) {
-                    section.classList.add('active');
-                }
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('tab-active'));
+                // Add active class to clicked tab
+                tab.classList.add('tab-active');
+                
+                // Hide all content sections
+                document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+                // Show content for clicked tab
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
             });
-
-            // Special handling for chart on tab switch
-            if (targetTab === 'parent') {
-                const policiesTab = document.querySelector('[data-sub-tab="policies"]');
-                if (policiesTab.classList.contains('sub-tab-active')) {
-                     initializeGradingChart();
-                }
-            }
-        }
-        
-        desktopTabs.forEach(tab => {
-            tab.addEventListener('click', () => switchTab(tab.dataset.tab));
         });
 
-        mobileTabs.forEach(tab => {
+        // Mobile Menu Tab functionality
+        document.querySelectorAll('.mobile-tab').forEach(tab => {
             tab.addEventListener('click', (e) => {
                 e.preventDefault();
-                switchTab(tab.dataset.tab);
-                mobileMenu.classList.add('hidden'); // Close menu on selection
-            });
-        });
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // --- SUB-TAB NAVIGATION ---
-        function handleSubTabs(containerId) {
-            const subTabs = document.querySelectorAll(`#${containerId} [data-sub-tab]`);
-            const subContentSections = document.querySelectorAll(`#${containerId} [data-sub-tab-content]`);
-            if (subTabs.length === 0) return;
+                 // Toggle menu closed
+                 document.getElementById('mobile-menu').classList.add('hidden');
 
-            subTabs.forEach(subTab => {
-                subTab.addEventListener('click', () => {
-                    const subTarget = subTab.dataset.subTab;
-                    subTabs.forEach(st => st.classList.remove('sub-tab-active'));
-                    subTab.classList.add('sub-tab-active');
-
-                    subContentSections.forEach(subSection => {
-                        subSection.classList.remove('active');
-                        if (subSection.dataset.subTabContent === subTarget) {
-                            subSection.classList.add('active');
-                        }
-                    });
-
-                    // Initialize chart if policies tab is clicked
-                    if (subTarget === 'policies') {
-                        initializeGradingChart();
-                    }
+                // Logic to switch tabs same as desktop
+                const tabId = tab.getAttribute('data-tab');
+                
+                // Update Desktop visual state just in case
+                document.querySelectorAll('.tab').forEach(t => {
+                    t.classList.remove('tab-active');
+                    if(t.getAttribute('data-tab') === tabId) t.classList.add('tab-active');
                 });
+
+                // Hide all content sections
+                document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+                // Show content for clicked tab
+                document.getElementById(tabId).classList.add('active');
             });
-        }
-        handleSubTabs('parent');
-        handleSubTabs('staff');
+        });
 
-        // --- DYNAMIC CONTENT RENDERING ---
-        function renderUpcomingEvents() {
-            const containers = {
-                'Beginning Band': document.getElementById('home-beginning-performances'),
-                'Intermediate Band': document.getElementById('home-intermediate-performances'),
-                'Advanced Band': document.getElementById('home-advanced-performances'),
-                'Marching Band': document.getElementById('home-marching-performances'),
-            };
+        // Sub-tab functionality (Parent & Staff sections)
+        document.querySelectorAll('.sub-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Find the parent container (e.g. parent-sub-content or staff-sub-content)
+                const parentSection = tab.closest('section');
+                
+                // Remove active class from sibling sub-tabs
+                parentSection.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('sub-tab-active'));
+                tab.classList.add('sub-tab-active');
 
-            eventData.forEach(item => {
-                const container = containers[item.band];
-                if (container) {
-                    const eventElement = document.createElement('div');
-                    eventElement.className = 'bg-white p-4 rounded-lg shadow-sm border border-gray-200';
-                    eventElement.innerHTML = `
-                        <p class="font-bold text-md text-gray-800">${item.event}</p>
-                        <p class="text-sm text-gray-600">${item.date}</p>
-                    `;
-                    container.appendChild(eventElement);
-                }
+                // Hide all sub-content sections within this parent
+                parentSection.querySelectorAll('.sub-content-section').forEach(section => section.classList.remove('active'));
+                
+                // Show target content
+                const subTabId = tab.getAttribute('data-sub-tab');
+                const targetContent = parentSection.querySelector(`[data-sub-tab-content="${subTabId}"]`);
+                if(targetContent) targetContent.classList.add('active');
             });
-        }
+        });
 
-        // --- CHART.JS VISUALIZATION ---
-        let gradingChartInstance = null; // To prevent re-initialization
-        function initializeGradingChart() {
-            const ctx = document.getElementById('gradingChart');
-            if (!ctx || gradingChartInstance) return; // Don't run if canvas not found or chart exists
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
 
-            gradingChartInstance = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Performances & Rehearsals (30%)', 'Playing Tests & Assignments (40%)', 'Class Participation (20%)', 'Journal & Written Work (10%)'],
-                    datasets: [{
-                        data: [30, 40, 20, 10],
-                        backgroundColor: ['#0d3b66', '#3b82f6', '#f9a825', '#fbbf24'],
-                        borderColor: '#ffffff',
-                        borderWidth: 3,
-                        hoverOffset: 10
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '60%',
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 15,
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed !== null) {
-                                        label += context.parsed + '%';
-                                    }
-                                    return label;
-                                }
-                            }
-                        }
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+        
+        // Chart.js Grading Chart
+        const ctx = document.getElementById('gradingChart').getContext('2d');
+        const gradingChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Performances', 'Class Work', 'Participation'],
+                datasets: [{
+                    data: [40, 30, 30], // Example data
+                    backgroundColor: ['#0d3b66', '#f9a825', '#10b981'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
                     }
                 }
-            });
-        }
-
-        // --- INITIALIZE ---
-        renderUpcomingEvents();
-        // Set initial active mobile tab
-        const initialActiveMobileTab = document.querySelector('.mobile-tab[data-tab="home"]');
-        if(initialActiveMobileTab) initialActiveMobileTab.classList.add('mobile-tab-active');
-    });
+            }
+        });
     </script>
 </body>
 </html>
-
