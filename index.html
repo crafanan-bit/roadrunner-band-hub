@@ -19,7 +19,7 @@
         .content-section.active, .sub-content-section.active { display: block; animation: fadeIn 0.5s; }
         .chart-container { position: relative; width: 100%; max-width: 320px; margin: 1rem auto; height: 320px; }
         .hero {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1200x400/0d3b66/f9a825?text=Road+Runner+Band');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('https://swallowsdayparade.org/wp-content/uploads/2026/04/Parade-40.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -52,6 +52,7 @@
                     <div class="flex-shrink-0">
                         <h1 class="text-xl font-bold text-gray-800">TRMS Music Program</h1>
                     </div>
+                    <!-- Desktop Navigation -->
                     <nav class="hidden md:flex items-center space-x-4">
                         <div data-tab="home" class="tab tab-active">Home</div>
                         <div data-tab="calendar" class="tab">Calendar</div>
@@ -60,6 +61,7 @@
                         <div data-tab="staff" class="tab">Staff</div>
                         <div data-tab="fundraising" class="tab">Fundraising</div>
                     </nav>
+                    <!-- Mobile Menu Button -->
                     <div class="md:hidden">
                         <button id="mobile-menu-button" class="text-gray-800 hover:text-blue-600 focus:outline-none">
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -69,6 +71,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Mobile Menu -->
             <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="#" data-tab="home" class="mobile-tab block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-500 hover:text-white">Home</a>
@@ -91,77 +94,133 @@
                 
                 <div class="bg-white p-8 rounded-lg shadow-sm mt-8">
                      <h3 class="text-2xl font-bold mb-4">A Message from the Director</h3>
-                     <p class="text-gray-600 leading-relaxed mb-4">Welcome to the 2025-2026 school year! My name is Colton Rafanan and I'm proud to serve as the Band Director of this program. Our goal is to guide students to success through musicianship, building self-esteem, social skills, and creativity in a safe learning environment. I look forward to a year of hard-work, learning, and fun!</p>
+                     <!-- Updated to 2026-2027 -->
+                     <p class="text-gray-600 leading-relaxed mb-4">Welcome to the 2026-2027 school year! My name is Colton Rafanan and I'm proud to serve as the Band Director of this program. Our goal is to guide students to success through musicianship, building self-esteem, social skills, and creativity in a safe learning environment. I look forward to a year of hard-work, learning, and fun!</p>
                 </div>
 
                 <div class="bg-white p-8 rounded-lg shadow-sm mt-8">
                     <h3 class="text-2xl font-bold mb-4 text-center">Upcoming Performances</h3>
                     <div id="upcoming-events" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        
+                        <!-- Beginning Band -->
                         <div>
                             <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Beginning Band</h4>
                             <div id="home-beginning-performances" class="space-y-4">
                                 <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
-                                    <div class="font-bold text-gray-800">End of the Year Concert</div>
-                                    <div class="text-sm text-gray-600">TRMS MPR</div>
-                                    <div class="text-sm font-semibold text-blue-600 mt-1">May 18, 2026</div>
+                                    <div class="font-bold text-gray-800">Holiday Concert</div>
+                                    <div class="text-sm text-gray-600">Tomas Rivera Middle School</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Dec 15th</div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">Spring Concert</div>
+                                    <div class="text-sm text-gray-600">Tomas Rivera Middle School</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">May 18th</div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Intermediate Band -->
                         <div>
                             <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Intermediate Band</h4>
                             <div id="home-intermediate-performances" class="space-y-4">
+                                <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mt-2">Semester 1</div>
                                 <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
-                                    <div class="font-bold text-gray-800">End of the Year Concert</div>
-                                    <div class="text-sm text-gray-600">TRMS MPR</div>
-                                    <div class="text-sm font-semibold text-blue-600 mt-1">May 18, 2026</div>
+                                    <div class="font-bold text-gray-800">Holiday Concert</div>
+                                    <div class="text-sm text-gray-600">Tomas Rivera Middle School</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Dec 15th</div>
+                                </div>
+                                
+                                <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mt-4">Semester 2</div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">SCSBOA VVUSD District Festival</div>
+                                    <div class="text-sm text-gray-600">Citrus Hill HS</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Mar 12th</div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">Spring Concert</div>
+                                    <div class="text-sm text-gray-600">Tomas Rivera Middle School</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">May 18th</div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Advanced Band -->
                         <div>
                             <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Advanced Band</h4>
                             <div id="home-advanced-performances" class="space-y-4">
+                                <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mt-2">Semester 1</div>
                                 <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
-                                    <div class="font-bold text-gray-800">Superintendent Awards</div>
-                                    <div class="text-sm text-gray-600">Citrus Hill High School</div>
-                                    <div class="text-sm font-semibold text-blue-600 mt-1">Feb 17, 2026</div>
+                                    <div class="font-bold text-gray-800">Holiday Concert</div>
+                                    <div class="text-sm text-gray-600">Tomas Rivera Middle School (TBA)</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Dec 15th</div>
+                                </div>
+                                
+                                <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mt-4">Semester 2</div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">SCSBOA MVUSD District Festival</div>
+                                    <div class="text-sm text-gray-600">TBD, Moreno Valley, CA</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Mar 6th</div>
                                 </div>
                                 <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
-                                    <div class="font-bold text-gray-800">SCSBOA Festival</div>
-                                    <div class="text-sm text-gray-600">Moreno Valley High School</div>
-                                    <div class="text-sm font-semibold text-blue-600 mt-1">Mar 7, 2026</div>
+                                    <div class="font-bold text-gray-800">SCSBOA VVUSD District Festival</div>
+                                    <div class="text-sm text-gray-600">Citrus Hill HS</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Mar 12th</div>
                                 </div>
                                 <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
-                                    <div class="font-bold text-gray-800">SCSBOA Festival</div>
-                                    <div class="text-sm text-gray-600">Citrus Hill High School</div>
-                                    <div class="text-sm font-semibold text-blue-600 mt-1">Mar 13, 2026</div>
-                                </div>
-                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
-                                    <div class="font-bold text-gray-800">End of the Year Concert</div>
-                                    <div class="text-sm text-gray-600">TRMS MPR</div>
-                                    <div class="text-sm font-semibold text-blue-600 mt-1">May 18, 2026</div>
+                                    <div class="font-bold text-gray-800">Spring Concert</div>
+                                    <div class="text-sm text-gray-600">Tomas Rivera Middle School</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">May 18th</div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Marching Band -->
                         <div>
                             <h4 class="text-xl font-bold mb-4 text-center text-gray-700">Marching Band</h4>
+                            
+                            <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500 shadow-sm mb-4">
+                                <div class="font-bold text-yellow-800">Rehearsals</div>
+                                <div class="text-sm text-gray-700 mt-1 font-medium">Fridays, 3:00 PM - 5:00 PM</div>
+                                <div class="text-sm text-gray-600 mt-1">Aug 28th — Dec 11th</div>
+                            </div>
+
                             <div id="home-marching-performances" class="space-y-4">
+                                <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mt-2">Semester 1</div>
                                 <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
-                                    <div class="font-bold text-gray-800">Camellia Festival Parade</div>
-                                    <div class="text-sm text-gray-600">Temple City</div>
-                                    <div class="text-sm font-semibold text-blue-600 mt-1">Feb 21, 2026</div>
+                                    <div class="font-bold text-gray-800">SCSBOA Val Verde Band Review</div>
+                                    <div class="text-sm text-gray-600">VVUSD (Local)</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Oct 10th</div>
                                 </div>
                                 <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
-                                    <div class="font-bold text-gray-800">Swallows Day Parade</div>
-                                    <div class="text-sm text-gray-600">San Juan Capistrano</div>
-                                    <div class="text-sm font-semibold text-blue-600 mt-1">Mar 21, 2026</div>
+                                    <div class="font-bold text-gray-800">SCSBOA Chino Band Review</div>
+                                    <div class="text-sm text-gray-600">Chino HS</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Nov 7th</div>
                                 </div>
                                 <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
-                                    <div class="font-bold text-gray-800">Knott's Berry Farm Field Trip Performance</div>
-                                    <div class="text-sm text-gray-600">Knott's Berry Farm</div>
-                                    <div class="text-sm font-semibold text-blue-600 mt-1">May 22, 2026</div>
+                                    <div class="font-bold text-gray-800">SCSBOA Riverside King Band Review</div>
+                                    <div class="text-sm text-gray-600">MLK HS, Riverside</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Nov 14th</div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">SCSBOA Perris Christmas Parade</div>
+                                    <div class="text-sm text-gray-600">Perris, CA</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">Dec 12th</div>
+                                </div>
+
+                                <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mt-4">Semester 2</div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">Spring Elem. Performance Tour</div>
+                                    <div class="text-sm text-gray-600">Mead Valley, Manuel L Real, Colombia</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">March/April TBA</div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-800 shadow-sm">
+                                    <div class="font-bold text-gray-800">Band Field Trip Performance</div>
+                                    <div class="text-sm text-gray-600">Location TBD</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">May 7th</div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -190,46 +249,10 @@
                         <div data-sub-tab="policies" class="sub-tab whitespace-nowrap">Syllabus & Policies</div>
                     </div>
                     <div id="parent-sub-content">
-                        <div data-sub-tab-content="communication" class="sub-content-section active text-center">
-                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg mb-8 text-left max-w-4xl mx-auto">
-                                <h3 class="font-bold text-xl text-yellow-800 mb-3">Notice: Upcoming Parent Meetings</h3>
-                                <p class="text-gray-700 mb-4">Hello TRMS Band Students and Families,</p>
-                                <p class="text-gray-700 mb-4">We have two important upcoming Parent Meetings on <strong>March 20th</strong> and <strong>April 10th</strong>. Both meetings will be held from <strong>5:00 - 5:30 PM</strong> after Marching Band Practice.</p>
-                                <p class="text-gray-700 mb-4">Please make every effort to attend, as we have important updates regarding our spring performances and our big end-of-year trip!</p>
-                                
-                                <p class="font-semibold text-gray-800 mb-2">Agenda for March 20th:</p>
-                                <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
-                                    <li>Swallows Day Parade logistics (March 21st)</li>
-                                    <li>Knott's Berry Farm Field Trip Update (Date moved to May 22nd)</li>
-                                    <li>Confirming Chaperones for upcoming events</li>
-                                    <li>Knott's Rehearsal Schedule (Fridays from 3:00 - 5:00 PM, April 10th through May 15th)</li>
-                                </ul>
-
-                                <p class="font-semibold text-gray-800 mb-2">Agenda for April 10th:</p>
-                                <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                    <li>Additional details and final planning for the Knott's Berry Farm Field Trip</li>
-                                </ul>
-                            </div>
-                            <hr class="my-8 max-w-sm mx-auto">
+                        <div data-sub-tab-content="communication" class="sub-content-section active text-center pt-4">
                             <p class="mb-6 text-gray-600 max-w-2xl mx-auto">The Remind app is the primary tool for all band announcements and reminders. Please join to stay up-to-date.</p>
                             <div class="bg-gray-100 p-6 rounded-lg inline-block">
                                 <p class="font-semibold text-gray-800 text-lg">Text <code class="bg-gray-200" style="color: #0d3b66;">@trmsbd</code> to <code class="bg-gray-200" style="color: #0d3b66;">81010</code></p>
-                            </div>
-                            <hr class="my-8 max-w-sm mx-auto">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Letters Home</h3>
-                            <div class="max-w-md mx-auto space-y-4">
-                                <a href="https://drive.google.com/file/d/1Wf8E7NV28lN7WxUKH4DYNzQP_jg9Ln3O/view?usp=sharing" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm w-full block">
-                                    Letter from Mr. Rafanan (Sept 4, 2025)
-                                </a>
-                                <a href="https://drive.google.com/file/d/1TCWgPvIioPrOXvxGyN9N6ewe35vOxedC/view?usp=sharing" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm w-full block">
-                                    September 17th Parent Meeting
-                                </a>
-                                <a href="https://drive.google.com/file/d/1qoATdRHuVC4njXMufVXojuX78ZSgiLjD/view?usp=sharing" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm w-full block">
-                                    October 6th Parent Meeting
-                                </a>
-                                <a href="https://drive.google.com/file/d/1cr-Rvh0iu6DKNuShggLffQ0cteoGdCFl/view?usp=sharing" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm w-full block">
-                                    November 1st Chino Band Review Schedule
-                                </a>
                             </div>
                         </div>
                         <div data-sub-tab-content="uniforms" class="sub-content-section">
@@ -277,7 +300,7 @@
                              </div>
                         </div>
                         <div data-sub-tab-content="policies" class="sub-content-section">
-                            <a href="https://drive.google.com/file/d/1vLFEqkJra4Nk8mk0RPLON09QXvbUANDe/view?usp=sharing" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm w-full block mb-10">Download Full Syllabus (PDF)</a>
+                            <a href="https://drive.google.com/file/d/1Xmzj6aAEGL7M3BCB2WcxFE9bIC2GnCu2/view?usp=sharing" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm w-full block mb-10">Download Full Syllabus (PDF)</a>
                             <div class="grid md:grid-cols-2 gap-10 items-center">
                                 <div>
                                     <h3 class="text-2xl font-bold mb-4 text-gray-800">Grading Categories</h3>
@@ -360,18 +383,13 @@
                                 </div>
                                 <div class="text-center bg-gray-50 p-6 rounded-lg">
                                     <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
-                                    <h3 class="text-2xl font-bold text-gray-800">Marissa Vickrey</h3>
-                                    <p class="text-lg text-blue-600 font-semibold mt-1">Visual & Woodwind Tech</p>
-                                </div>
-                                <div class="text-center bg-gray-50 p-6 rounded-lg">
-                                    <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
                                     <h3 class="text-2xl font-bold text-gray-800">Lupe Nungaray</h3>
                                     <p class="text-lg text-blue-600 font-semibold mt-1">Color Guard Coach</p>
                                 </div>
                                 <div class="text-center bg-gray-50 p-6 rounded-lg">
                                     <img src="https://placehold.co/200x200/e0e7ff/374151?text=Photo" alt="Photo of Staff Member" class="rounded-full mx-auto shadow-lg mb-4">
-                                    <h3 class="text-2xl font-bold text-gray-800">Ryan Vickrey</h3>
-                                    <p class="text-lg text-blue-600 font-semibold mt-1">Drum Major Instructor</p>
+                                    <h3 class="text-2xl font-bold text-gray-800">Charles Grey</h3>
+                                    <p class="text-lg text-blue-600 font-semibold mt-1">Parade Instructor</p>
                                 </div>
                             </div>
                         </div>
@@ -384,29 +402,47 @@
             </section>
             
             <section id="fundraising" class="content-section">
-                <div class="bg-white p-8 md:p-12 rounded-lg shadow-sm max-w-5xl mx-auto">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Current Fundraiser: Raising Cane's!</h2>
-                    <div class="text-center text-gray-600 leading-relaxed">
-                        <p class="text-lg">Support the TRMS Band Program by dining at Raising Cane's!</p>
-                        <div class="my-6 bg-gray-50 border-l-4 border-yellow-500 p-6 rounded-r-lg inline-block">
-                            <p class="font-bold text-xl text-gray-800">Wednesday, October 22nd, 2025</p>
-                            <p class="text-md">12:00 PM - 10:00 PM</p>
-                            <p class="text-md mt-2">239 Old Nuevo Rd., Perris, CA</p>
+                <div class="bg-white p-8 md:p-12 rounded-lg shadow-sm max-w-4xl mx-auto space-y-8">
+                    <h2 class="text-3xl font-bold text-gray-800 text-center">Band Fundraising</h2>
+                    
+                    <!-- Purpose & Goals -->
+                    <div class="bg-blue-900 text-white p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-bold mb-2">Where Fundraising Dollars Go</h3>
+                        <p class="text-blue-100 text-sm leading-relaxed">Funds raised throughout the 2026–2027 school year directly benefit our music students by covering festival entry fees, instrument repairs, new sheet music purchases, transportation costs, and marching band supplies.</p>
+                    </div>
+
+                    <!-- Featured Fundraiser: MoneyDolly -->
+                    <div class="border border-blue-200 rounded-lg p-6 bg-blue-50/50 shadow-sm">
+                        <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                            <h3 class="text-2xl font-bold text-blue-900">Upcoming: MoneyDolly Campaign</h3>
+                            <span class="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Future Event</span>
                         </div>
-                        <p class="max-w-xl mx-auto">Mention the fundraiser at the restaurant, or apply the code <code class="bg-gray-200 text-blue-800 font-bold p-1 rounded">RCFUND96</code> to online or app orders at checkout and Cane's will donate 15% of sales to our program.</p>
-                        <div class="mt-8">
-                             <a href="https://drive.google.com/file/d/1Dfn2CvLh7IvEHx9mVZwKS13olji2dYab/view?usp=drive_link" target="_blank" class="bg-gray-800 text-white text-center font-bold py-3 px-6 rounded-lg hover:bg-gray-900 transition shadow-sm">Download Flyer (PDF)</a>
+                        <p class="text-gray-700 mb-4 leading-relaxed">MoneyDolly is a app-based fundraising platform that allows family and friends to directly support our band program digitally—no order forms or cash collection required.</p>
+                        
+                        <div class="bg-white p-4 rounded-lg border border-blue-100 mb-4">
+                            <h4 class="font-bold text-gray-800 mb-2">How It Works for Students & Families:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-600 text-sm">
+                                <li>Download the <strong>MoneyDolly</strong> app from the App Store or Google Play Store.</li>
+                                <li>Join our campaign using our official TRMS Band Code (will be distributed at launch).</li>
+                                <li>Share your student's donation link via text, email, and social media.</li>
+                            </ul>
+                        </div>
+
+                        <div class="text-sm text-gray-600 bg-blue-100/60 p-3 rounded text-center">
+                            <strong>Status:</strong> Campaign dates, access codes, and kick-off details are currently being scheduled and will be shared via Remind soon.
                         </div>
                     </div>
-                </div>
 
-                <div class="my-12 border-t border-gray-200"></div>
+                    <!-- Future Fundraisers (TBD) -->
+                    <div class="border border-gray-200 rounded-lg p-6 bg-gray-50 shadow-sm">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Additional Fundraisers (TBD)</h3>
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4">We are actively exploring additional fundraising opportunities (such as restaurant profit nights and event concessions) for later in the school year. Specific events, dates, and instructions are To Be Determined (TBD) and will be posted here as finalized.</p>
+                    </div>
 
-                <div class="bg-white p-8 md:p-12 rounded-lg shadow-sm max-w-5xl mx-auto">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Upcoming Fundraiser: Holiday Pastries</h2>
-                     <div class="text-left text-gray-600 leading-relaxed max-w-2xl mx-auto">
-                        <p class="text-lg text-center mb-6">This is our last big opportunity for 2025! Each pastry sells for $20, and our program will earn $7-8 per pastry depending on total group sales.</p>
-                     </div>
+                    <!-- Fundraising Contact -->
+                    <div class="text-center pt-2">
+                        <p class="text-gray-600 text-sm">Questions about fundraising or interested in corporate sponsorship? Please reach out to Mr. Rafanan at <a href="mailto:crafanan@valverde.edu" class="text-blue-600 underline font-medium">crafanan@valverde.edu</a>.</p>
+                    </div>
                 </div>
             </section>
             
